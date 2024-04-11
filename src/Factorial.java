@@ -24,3 +24,17 @@ class Factorial {
         }
     }
 }
+/* alternate method 
+    public static void fact(int x)
+{
+    if(x=0 || x=1) return 1;
+    else return x*fact(x-1);
+}
+public static void main(String args[])
+{
+ Scanner sc= new Scanner (System.in);
+ int x= sc.nextInt();
+ int y=fact(x);        //System.out.println(fact(x)); 
+ System.out.println(y);
+}
+*/

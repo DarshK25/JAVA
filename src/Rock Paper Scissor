@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Main
+{
+  public static void main (String[]args)
+  {
+	Scanner sc = new Scanner (System.in);
+	  System.out.println ("Welcome to ROCK-PAPER-SCISSOR!!");
+	  String playAgain;
+	do
+	  {
+		  System.out.println ("Enter your choice (Rock/Paper/Scissor):\t");
+		  String userChoice = sc.nextLine ().toLowerCase ();
+		  System.out.println ("Your Choice:\t" + userChoice);
+	   	  String compChoice = GenRdmChoice ();
+		  System.out.println ("Computer's Choice:\t" + compChoice);
+		  String userChoiceLower = userChoice.toLowerCase ();
+		  String compChoiceLower = compChoice.toLowerCase ();
+		  int Result = Winner (userChoiceLower, compChoiceLower);
+		  if (Result == 0)
+		  {
+			System.out.println ("Its a TIE!");
+		  }
+		  else if (Result == 1)
+		  {
+			System.out.println ("You Won!");
+		  }
+		  else if (Result == 2)
+		  {
+			System.out.println ("Computer Won.");
+		  }
+		  System.out.println ("Do you want to play again? (y/n) :");
+		  playAgain = sc.nextLine ();
+     } while(playAgain.equals("y"));
+  }
+	public static String GenRdmChoice ()
+	{
+	  String[]a = { "Rock", "Paper", "Scissor" };
+	  int rdmChoice = new Random ().nextInt (a.length);
+	  String Choice = a[rdmChoice];
+	  return Choice;
+	}
+	   public static int Winner(String userch, String compch) {
+        if (compch.equals(userch)) {
+            return 0;
+        } else if (userch.equals("rock") && compch.equals("scissor") ||
+                   userch.equals("paper") && compch.equals("rock") ||
+                   userch.equals("scissor") && compch.equals("paper")) {
+            System.out.println(userch.substring(0, 1).toUpperCase() //takes first letter from user input and converts it into Upper case
+            + userch.substring(1)//takes user's input from index 1 until last as endIndex is not specified defaut is last
+            + " beats " + compch.substring(0, 1).toUpperCase() + compch.substring(1));
+            return 1; // User wins
+        } else {
+            System.out.println(compch.substring(0, 1).toUpperCase() + compch.substring(1) + " beats " + userch.substring(0, 1).toUpperCase() + userch.substring(1));
+            return 2; // Computer wins
+        }
+    }
+}
